@@ -9,9 +9,10 @@ namespace NSS {
             return _exercises;
         }
 
-        public void createExercise(string Name, string Language){
+        public Exercise createExercise(string Name, string Language){
             Exercise Exercise = new Exercise(_exercises, Name, Language){};
             _exercises.Add(Exercise);
+            return Exercise;
         }
 
 

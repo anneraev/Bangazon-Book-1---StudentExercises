@@ -7,10 +7,16 @@ namespace NSS
     {
         private List<Instructor> _instructors = new List<Instructor>();
 
-        public void createInstructor(string FirstName, string LastName)
+        public Instructor createInstructor(string FirstName, string LastName)
         {
             Instructor Instructor = new Instructor(_instructors, FirstName, LastName) { };
             _instructors.Add(Instructor);
+
+            return Instructor;
+        }
+
+        public List<Instructor> getAll(){
+            return _instructors;
         }
 
     }

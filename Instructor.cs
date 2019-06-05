@@ -12,9 +12,23 @@ namespace NSS {
         private string _firstName;
         private string _lastName;
         private string _slackHandle;
-        private int _cohortId;
-        private int specialty;
+        private Cohort _cohort;
+        private string _specialty;
+
+        public string Specialty {get {
+            return _specialty;
+        }}
+
+        public void setSpecialty(string Specialty){
+            _specialty = Specialty;
+        }
+
         public void AssignExercise(Student Student, Exercise Exercise) {
+            Exercise ExerciseCopy = new Exercise(Exercise.Id(), Exercise.Name(), Exercise.Language(), Student.Id());
+            Student.Assign(ExerciseCopy);
+        }
+        public void setCohort(Cohort Cohort){
+            _cohort = Cohort;
         }
     }
 }

@@ -13,6 +13,20 @@ namespace NSS {
         private string _firstName;
         private string _lastName;
         private string _slackhandle;
-        private int _cohortId;
+        private Cohort _cohort;
+
+        private List<Exercise> _exerciseList = new List<Exercise>();
+
+        public void setCohort(Cohort Cohort){
+            _cohort = Cohort;
+        }
+
+        public int Id(){
+            return _id;
+        }
+
+        public void Assign(Exercise Exercise){
+            _exerciseList.Add(Exercise);
+        }
     }
 }

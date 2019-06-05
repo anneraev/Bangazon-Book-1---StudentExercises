@@ -7,10 +7,16 @@ namespace NSS
     {
         private List<Student> _students;
 
-        public void createStudent(string FirstName, string LastName)
+        public Student createStudent(string FirstName, string LastName)
         {
             Student Student = new Student(_students, FirstName, LastName) { };
             _students.Add(Student);
+            return Student;
+        }
+
+        public List<Student> getAll()
+        {
+            return _students;
         }
 
     }

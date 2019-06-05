@@ -5,9 +5,10 @@ namespace NSS {
     class CohortsList {
         private List<Cohort> _cohorts = new List<Cohort>();
 
-        public void createCohort(string Name){
-            Cohort Cohort = new Cohort(_cohorts, Name){};
+        public Cohort createCohort(string Name, string CohortNum){
+            Cohort Cohort = new Cohort(_cohorts, Name, CohortNum){};
             _cohorts.Add(Cohort);
+            return Cohort;
         }
     }
 }
