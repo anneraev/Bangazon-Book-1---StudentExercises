@@ -5,7 +5,7 @@ namespace NSS
 {
     class StudentList
     {
-        private List<Student> _students;
+        private List<Student> _students = new List<Student>();
 
         public Student createStudent(string FirstName, string LastName)
         {

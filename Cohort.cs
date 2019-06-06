@@ -22,5 +22,30 @@ namespace NSS {
             _students.Add(Student);
             Student.setCohort(this);
         }
+
+        public string Name(){
+            return $"{_name} {_cohortNum}";
+        }
+
+        public string printInfo(){
+            string wholeString = $"Name: {this.Name()}";
+            wholeString += Environment.NewLine;
+            wholeString += "Instructors: ";
+            foreach (Instructor Instructor in _instructors)
+            {
+                wholeString += Instructor.printInfo();
+                wholeString += Environment.NewLine;
+            }
+            wholeString += Environment.NewLine;
+            wholeString += "Students: ";
+            foreach (Student Student in _students)
+            {
+                wholeString += Student.printInfo();
+                wholeString += Environment.NewLine;
+            }
+            wholeString += Environment.NewLine;
+            return wholeString;
+        }
+
     }
 }

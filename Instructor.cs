@@ -11,13 +11,9 @@ namespace NSS {
 
         private string _firstName;
         private string _lastName;
-        private string _slackHandle;
+        public string SlackHandle {get; set;}
         private Cohort _cohort;
         private string _specialty;
-
-        public string Specialty {get {
-            return _specialty;
-        }}
 
         public void setSpecialty(string Specialty){
             _specialty = Specialty;
@@ -30,5 +26,22 @@ namespace NSS {
         public void setCohort(Cohort Cohort){
             _cohort = Cohort;
         }
+
+        public string Name(){
+            return $"{_firstName} {_lastName}";
+        }
+
+        public string printInfo(){
+            string wholeString = $"Name: {this.Name()}";
+            wholeString += Environment.NewLine;
+            wholeString += $"Cohort: {_cohort.Name()}";
+            wholeString += Environment.NewLine;
+            wholeString += $"Specialty: {_specialty}";
+            wholeString += Environment.NewLine;
+            wholeString += $"Slack: {SlackHandle}";
+            wholeString += Environment.NewLine;
+            return wholeString;
+        }
+
     }
 }

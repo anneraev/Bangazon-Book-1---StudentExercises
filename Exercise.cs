@@ -36,5 +36,13 @@ namespace NSS
         public string Language(){
             return _language;
         }
+
+        public string printInfo(){
+            string wholeString = $"Title: {_name}";
+            wholeString += Environment.NewLine;
+            wholeString += $"Langauge:{_language}";
+            wholeString += Environment.NewLine;
+            return wholeString;
+        }
     }
 }

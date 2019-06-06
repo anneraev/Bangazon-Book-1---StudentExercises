@@ -32,6 +32,10 @@ namespace StudentExercises
             Instructor2.setSpecialty("Unknown.");
             Instructor3.setSpecialty("Snacks.");
             Instructor4.setSpecialty("Illustration.");
+            Instructor1.SlackHandle = "@jisie";
+            Instructor2.SlackHandle = "@andy";
+            Instructor3.SlackHandle = "@kristin";
+            Instructor4.SlackHandle = "@leah";
             foreach (Instructor Instructor in InstructorList.getAll())
             {
                 Cohort31.Assign(Instructor);
@@ -43,6 +47,10 @@ namespace StudentExercises
             Student Student2 = StudentList.createStudent("Jameka", "Echols");
             Student Student3 = StudentList.createStudent("Chris", "Morgan");
             Student Student4 = StudentList.createStudent("Meag", "Mueller");
+            Student1.SlackHandle = "@anne";
+            Student2.SlackHandle = "@jameka";
+            Student3.SlackHandle = "@chris";
+            Student4.SlackHandle = "@meag";
             foreach (Student Student in StudentList.getAll())
             {
                 Cohort31.Assign(Student);
@@ -56,6 +64,11 @@ namespace StudentExercises
                 Instructor4.AssignExercise(Student, Exercise4);
             }
 
+            foreach (Cohort Cohort in CohortList.AllCohorts())
+            {
+                Console.WriteLine(Cohort.printInfo());
+                Console.WriteLine("-----------------");
+            }
         }
     }
 }
