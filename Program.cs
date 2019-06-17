@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using NSS;
+using System.Linq;
 
 namespace StudentExercises
 {
@@ -69,6 +70,34 @@ namespace StudentExercises
                 Console.WriteLine(Cohort.printInfo());
                 Console.WriteLine("-----------------");
             }
+
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("PART 2");
+            Console.WriteLine("--------------------------");
+
+            Cohort30.Assign(StudentList.createStudent("Larry", "Larryson"));
+            Cohort30.Assign(StudentList.createStudent("Kristen", "Kristinson"));
+            Cohort30.Assign(StudentList.createStudent("Loshanna", "Loshannason"));
+            Cohort30.Assign(StudentList.createStudent("Tre", "Treson"));
+
+            ExerciseList.createExercise("OverlyExcited", "Javascript");
+            ExerciseList.createExercise("SolarSystem", "Javascript");
+            ExerciseList.createExercise("CarLot", "Javascript");
+            ExerciseList.createExercise("DynamicCards", "Javascript");
+
+            Cohort30.Assign(InstructorList.createInstructor("Idont", "Remember"));
+            Cohort30.Assign(InstructorList.createInstructor("Who", "Taught"));
+            Cohort30.Assign(InstructorList.createInstructor("Cohort", "Thirty"));
+
+            //note to self: never do it like this again. Just wanted to see if I could keep it all straight in my head long enough to type out working code.
+            //for each student wher student cohort is cohort 30, iterate through a list of exercies that are of the javascript langauge and assign those to the student.
+            StudentList.getAll().Where(student => student.Cohort() == Cohort30.Name()).ToList().ForEach(student => ExerciseList.getAll().Where(exercise => exercise.Language() == "Javascript").ToList().ForEach(exercise => student.Assign(exercise)));
+
+            Console.WriteLine("All javascript exercises");
+            ExerciseList.getAll().Where(exercise => exercise.Language() == "Javascript").ToList().ForEach(exercise => Console.WriteLine($"{exercise.Name()} is in {exercise.Language()}"));
+            Console.WriteLine("----------------------");
+
+            Console.WriteLine("All students in Cohort 30");
         }
     }
 }
