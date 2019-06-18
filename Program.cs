@@ -79,6 +79,7 @@ namespace StudentExercises
             Cohort30.Assign(StudentList.createStudent("Kristen", "Kristinson"));
             Cohort30.Assign(StudentList.createStudent("Loshanna", "Loshannason"));
             Cohort30.Assign(StudentList.createStudent("Tre", "Treson"));
+            Cohort30.Assign(StudentList.createStudent("Overachieving", "Asshat"));
 
             ExerciseList.createExercise("OverlyExcited", "Javascript");
             ExerciseList.createExercise("SolarSystem", "Javascript");
@@ -93,11 +94,47 @@ namespace StudentExercises
             //for each student wher student cohort is cohort 30, iterate through a list of exercies that are of the javascript langauge and assign those to the student.
             StudentList.getAll().Where(student => student.Cohort() == Cohort30.Name()).ToList().ForEach(student => ExerciseList.getAll().Where(exercise => exercise.Language() == "Javascript").ToList().ForEach(exercise => student.Assign(exercise)));
 
+            Student Overachiever = StudentList.getAll().First(Student=> Student.Name() == "Overachieving Asshat");
+
+            ExerciseList.getAll().Where(exercise => exercise.Language() == "C#").ToList().ForEach(exercise => Overachiever.Assign(exercise));
+
+            Cohort30.Assign(StudentList.createStudent("Lazy", "Asshole"));
+
             Console.WriteLine("All javascript exercises");
+            //For all exercises where javascript is the language, write out the name of the exercise and its langauge.
             ExerciseList.getAll().Where(exercise => exercise.Language() == "Javascript").ToList().ForEach(exercise => Console.WriteLine($"{exercise.Name()} is in {exercise.Language()}"));
             Console.WriteLine("----------------------");
 
             Console.WriteLine("All students in Cohort 30");
+            StudentList.getAll().Where(student => student.Cohort() == Cohort30.Name()).ToList().ForEach(student => Console.WriteLine($"{student.Name()} is in {student.Cohort()}"));
+            Console.WriteLine("----------------------");
+
+            Console.WriteLine("All Instructors in Cohort 30");
+            InstructorList.getAll().Where(instructor => instructor.Cohort() == Cohort30.Name()).ToList().ForEach(instructor => Console.WriteLine($"{instructor.Name()} is in {instructor.Cohort()}"));
+            Console.WriteLine("----------------------");
+            Console.WriteLine("All students sorted by LastName");
+            StudentList.getAll().OrderBy(student => student.LastName()).ToList().ForEach(student => Console.WriteLine($"{student.LastName()}, {student.FirstName()}"));
+
+            Console.WriteLine("----------------------");
+            Console.WriteLine("All students working on 0 exercises:");
+            StudentList.getAll().Where(student => student.ExerciseList().Count == 0).ToList().ForEach(student => Console.WriteLine(student.Name()));
+
+            Console.WriteLine("----------------------");
+            Console.WriteLine("The student working on the most exercises:");
+            int MaxExercises = StudentList.getAll().Select(student => student.ExerciseList().Count).Max();
+
+            Console.WriteLine(StudentList.getAll().First(student => student.ExerciseList().Count == MaxExercises).Name());
+
+            Console.WriteLine("----------------------");
+            Console.WriteLine("The number of students in each cohort:");
+            IEnumerable<EnrollmentReport> enrollmentReports = CohortList.AllCohorts().Select(cohort => new EnrollmentReport {
+                CohortName = cohort.Name(),
+                StudentCount = StudentList.getAll().Where(student => student.Cohort() == cohort.Name()).ToList().Count
+            });
+
+            foreach(EnrollmentReport report in enrollmentReports){
+                Console.WriteLine($"{report.CohortName} has {report.StudentCount} students.");
+            }
         }
     }
 }

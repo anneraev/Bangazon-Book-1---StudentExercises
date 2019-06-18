@@ -10,7 +10,7 @@ namespace NSS {
         }
 
         public Cohort createCohort(string Name, string CohortNum){
-            Cohort Cohort = new Cohort(_cohorts, Name, CohortNum){};
+            Cohort Cohort = new Cohort(Name, CohortNum){};
             _cohorts.Add(Cohort);
             return Cohort;
         }

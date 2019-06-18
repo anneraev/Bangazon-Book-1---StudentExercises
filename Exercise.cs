@@ -5,14 +5,13 @@ namespace NSS
 {
     class Exercise
     {
-        public Exercise( List<Exercise> List, string Name, string Language) {
-            _id = List.Count + 1;
+        public Exercise(string Name, string Language) {
+            _id = Guid.NewGuid();
             _name = Name;
             _language = Language;
-            _studentId = 0;
         }
 
-        public Exercise(int Id, string Name, string Language, int StudentId){
+        public Exercise(Guid Id, string Name, string Language, Guid StudentId){
             _id = Id;
             _name = Name;
             _language = Language;
@@ -20,12 +19,12 @@ namespace NSS
         }
 
 
-        private int _id;
+        private Guid _id;
         private string _name;
         private string _language;
-        private int _studentId;
+        private Guid _studentId;
 
-        public int Id(){
+        public Guid Id(){
             return _id;
         }
 

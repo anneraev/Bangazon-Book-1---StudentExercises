@@ -9,7 +9,7 @@ namespace NSS
 
         public Student createStudent(string FirstName, string LastName)
         {
-            Student Student = new Student(_students, FirstName, LastName) { };
+            Student Student = new Student(FirstName, LastName) { };
             _students.Add(Student);
             return Student;
         }

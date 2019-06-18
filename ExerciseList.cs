@@ -6,7 +6,7 @@ namespace NSS {
         private List<Exercise> _exercises = new List<Exercise>{};
 
         public Exercise createExercise(string Name, string Language){
-            Exercise Exercise = new Exercise(_exercises, Name, Language){};
+            Exercise Exercise = new Exercise(Name, Language){};
             _exercises.Add(Exercise);
             return Exercise;
         }

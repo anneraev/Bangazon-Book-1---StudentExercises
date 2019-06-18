@@ -9,7 +9,7 @@ namespace NSS
 
         public Instructor createInstructor(string FirstName, string LastName)
         {
-            Instructor Instructor = new Instructor(_instructors, FirstName, LastName) { };
+            Instructor Instructor = new Instructor(FirstName, LastName) { };
             _instructors.Add(Instructor);
 
             return Instructor;

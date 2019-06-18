@@ -3,24 +3,24 @@ using System.Collections.Generic;
 
 namespace NSS {
     class Cohort {
-        public Cohort(List<Cohort> Cohorts, string Name, string CohortNum){
-            _id = Cohorts.Count + 1;
+        public Cohort(string Name, string CohortNum){
+            _id = Guid.NewGuid();
             _name = Name;
             _cohortNum = CohortNum;
         }
-        private int _id;
+        private Guid _id;
         private string _name;
         private string _cohortNum;
         private List<Student> _students = new List<Student>();
         private List<Instructor> _instructors = new List<Instructor>();
         public void Assign(Instructor Instructor){
             _instructors.Add(Instructor);
-            Instructor.setCohort(this);
+            Instructor.setCohort(this.Name());
         }
 
         public void Assign(Student Student){
             _students.Add(Student);
-            Student.setCohort(this);
+            Student.setCohort(this.Name());
         }
 
         public string Name(){
